@@ -8,10 +8,12 @@ const cookieParser = require ('cookie-parser');
 const verifyJWT = require ('./middleware/verifyJWT');
 const cors = require ('cors');
 const corsOptions = require ('./config/corsOptions');
+const credentials = require('./middleware/credentials');
 
 //connect to db
 connectDB();
 
+app.use (credentials);
 app.use (cors (corsOptions));
 app.use (express.json());
 app.use (express.urlencoded ({ extended : false }));

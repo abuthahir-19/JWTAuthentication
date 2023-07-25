@@ -3,7 +3,6 @@ const bcrypt = require ('bcrypt');
 
 const createNewUser = async (req, res) => {
     const { firstName, lastName, email, password, phone } = req.body;
-    console.log ("Register route : " , req.body)
     const existence = await User.findOne ({ email, phone }).exec();
     if (existence) return res.status (201).json ({ message : "email already exists. Please sign in !!" });
 
